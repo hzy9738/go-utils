@@ -1,6 +1,10 @@
 # common-utils
 golang common util func
 
+## use
+```
+ go get github.com/hzy9738/common-utils
+```
 ### Tree
 + new
 ```
