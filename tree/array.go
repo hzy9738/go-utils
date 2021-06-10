@@ -7,7 +7,7 @@ import (
 
 /**
  * 得到子级切片
- * @param int64
+ * @param interface{}
  * @return []interface{}
  */
 func (t OriginData) GetChild(myID interface{}) []interface{} {
@@ -29,10 +29,9 @@ func (t OriginData) GetChild(myID interface{}) []interface{} {
 
 /**
  *
- * 获取树状数组
- * @param string $myid 要查询的ID
- * @param string $itemprefix 前缀
- * @return map[int64]interface
+ * 获取树状切片
+ * @param interface{}
+ * @return []interface{}
  */
 func (t OriginData) GetTreeArray(myID interface{}) []interface{} {
 	myIDType := reflect.TypeOf(myID).Name()
