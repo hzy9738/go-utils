@@ -2,7 +2,7 @@ package tree
 
 import (
 	"errors"
-	"github.com/hzy9738/common-utils"
+	"github.com/hzy9738/common-utils/convert"
 	"reflect"
 )
 
@@ -35,6 +35,12 @@ func SetTreePidName(pName string) Option {
 	}
 }
 
+func SetTreeIdName(myIDName string) Option {
+	return func(client *OriginData) {
+		client.MyID = myIDName
+	}
+}
+
 func NewInit(opts ...Option) (OriginData, error) {
 	defaultClient := OriginData{
 		Data:    nil,
@@ -55,7 +61,7 @@ func NewInit(opts ...Option) (OriginData, error) {
 			return defaultClient, errors.New("Data必须是切片类型")
 		}
 	}
-	err := common_utils.SwapTo(defaultClient.Data, &defaultClient.dataMap)
+	err := convert.SwapTo(defaultClient.Data, &defaultClient.dataMap)
 	if err != nil {
 		return defaultClient, nil
 	}

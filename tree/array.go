@@ -1,28 +1,25 @@
 package tree
 
-import common_utils "github.com/hzy9738/common-utils"
-
-
-type Tree struct {
-	Name      string `json:"name"`
-	Pid       int    `json:"pid"`
-	ChildList []Tree `json:"childlist"`
-}
+import (
+	"github.com/hzy9738/common-utils/convert"
+	"reflect"
+)
 
 /**
  * 得到子级切片
  * @param int64
  * @return []interface{}
  */
-func (t OriginData) GetChild(myID int64) []interface{} {
+func (t OriginData) GetChild(myID interface{}) []interface{} {
+	myIDType := reflect.TypeOf(myID).Name()
 	var data []interface{}
 	for _, v := range t.dataMap {
 		if _, ok := v[t.MyID]; !ok {
 			continue
 		}
 		if _, ok := v[t.PName]; ok {
-			p := int64(v[t.PName].(float64))
-			if p == myID {
+			p, err := convert.ValueSwapTo(v[t.PName], myIDType)
+			if err == nil && p == myID {
 				data = append(data, v)
 			}
 		}
@@ -37,7 +34,8 @@ func (t OriginData) GetChild(myID int64) []interface{} {
  * @param string $itemprefix 前缀
  * @return map[int64]interface
  */
-func (t OriginData) GetTreeArray(myID int64) []interface{} {
+func (t OriginData) GetTreeArray(myID interface{}) []interface{} {
+	myIDType := reflect.TypeOf(myID).Name()
 	childs := t.GetChild(myID)
 	n := 0
 	var data []interface{}
@@ -45,11 +43,13 @@ func (t OriginData) GetTreeArray(myID int64) []interface{} {
 	if total > 0 {
 		for _, v := range childs {
 			newData := map[string]interface{}{}
-			_ = common_utils.SwapTo(v, &newData)
-			id := int64(newData[t.MyID].(float64))
-			newData[t.CName] = t.GetChild(id)
-			data = append(data, newData)
-			n++
+			_ = convert.SwapTo(v, &newData)
+			id, err := convert.ValueSwapTo(newData[t.MyID], myIDType)
+			if err == nil {
+				newData[t.CName] = t.GetTreeArray(id)
+				data = append(data, newData)
+				n++
+			}
 		}
 	}
 	return data
