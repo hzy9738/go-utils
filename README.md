@@ -14,7 +14,8 @@ treeData, _ := tree.NewInit(
 ```
 + getTreeArray
 ```
-treeData.GetTreeArray("0")
+pid := 0
+treeData.GetTreeArray(pid)
 ```
 
 ### mysql-config
