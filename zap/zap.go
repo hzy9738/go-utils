@@ -1,4 +1,4 @@
-package common_utils
+package zap
 
 import (
 	"go.uber.org/zap"

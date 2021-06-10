@@ -1,10 +1,10 @@
-package common_utils
+package mysql
 
 import (
 	"fmt"
 )
 
-type MysqlConfig struct {
+type DBConfig struct {
 	Host     string `json:"host"`
 	User     string `json:"user"`
 	Pwd      string `json:"pwd"`
@@ -12,7 +12,7 @@ type MysqlConfig struct {
 	Port     int64  `json:"port"`
 }
 
-func GetMysqlString(mysqlInfo *MysqlConfig) string {
+func GetMysqlString(mysqlInfo *DBConfig) string {
 	if mysqlInfo.Port == 0 {
 		mysqlInfo.Port = 3306
 	}

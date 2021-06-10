@@ -4,14 +4,14 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-sql-driver/mysql"
-	common_utils "github.com/hzy9738/common-utils"
 	"github.com/hzy9738/common-utils/convert"
+	"github.com/hzy9738/common-utils/mysql"
 	"github.com/hzy9738/common-utils/tree"
 	"github.com/jinzhu/gorm"
 )
 
 func main() {
-	mysqlString := common_utils.GetMysqlString(&common_utils.MysqlConfig{
+	mysqlString := mysql.GetMysqlString(&mysql.DBConfig{
 		Host:     "192.168.1.69",
 		User:     "bimeng",
 		Pwd:      "yjkj2018",

@@ -19,4 +19,13 @@ treeData.GetTreeArray(pid)
 ```
 
 ### mysql-config
+``` 
+mysqlString := mysql.GetMysqlString(&mysql.DBConfig{
+	Host:     "xxx",
+	User:     "xxx",
+	Pwd:      "xxx",
+	Database: "xxx",
+})
+db, err := gorm.Open("mysql", mysqlString)  // gorm use
+```
 ### zap-init
