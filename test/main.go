@@ -30,7 +30,7 @@ func main() {
 		fmt.Println(err)
 	}
 
-	data := treeData.GetTreeArray(0)
+	data := treeData.GetTreeArray("0")
 	var treeData1 []RoleTree
 	_ = convert.SwapTo(data,&treeData1)
 	r := gin.Default()

@@ -61,10 +61,10 @@ func ValueSwapTo(value interface{}, toType string) (val interface{}, err error) 
 	case "string":
 		switch valueType {
 		case "float64":
-			val = strconv.FormatFloat(value.(float64), 'E', -1, 64)
+			val = strconv.Itoa(int(value.(float64)))
 			break
 		case "float32":
-			val = strconv.FormatFloat(float64(value.(float32)), 'E', -1, 32)
+			val = strconv.Itoa(int(value.(float32)))
 			break
 		case "int":
 			val = strconv.Itoa(value.(int))
@@ -242,7 +242,6 @@ func ValueSwapTo(value interface{}, toType string) (val interface{}, err error) 
 		err = errors.New("未知类型" + toType)
 		break
 	}
-
 	//else if .......增加其他一些类型的转换
 	return val, err
 }
