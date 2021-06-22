@@ -9,7 +9,7 @@ golang common util func
 + new
 ```
 treeData, _ := tree.NewInit(
-	tree.SetTreeOriginData(roles),  //roles is slice
+    tree.SetTreeOriginData(roles),  //roles is slice
 )
 ```
 + getTreeArray
