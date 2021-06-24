@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	_chan "github.com/hzy9738/common-utils/chan"
-
+	_chan "github.com/hzy9738/go-utils/chans"
+	"github.com/hzy9738/go-utils/strings"
 )
 
 type Student struct {
@@ -15,4 +15,5 @@ func main() {
 		resChan <- param
 	})
 	fmt.Println(res)
+	strings.ReverseString("abc")
 }

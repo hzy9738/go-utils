@@ -1,4 +1,4 @@
-module github.com/hzy9738/common-utils
+module github.com/hzy9738/go-utils
 
 go 1.16
 

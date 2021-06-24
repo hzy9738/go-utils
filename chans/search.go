@@ -1,7 +1,8 @@
-package _chan
+package chans
 
 import (
 	"errors"
+	"fmt"
 	"reflect"
 )
 
@@ -53,4 +54,11 @@ func GetResByParamSlice(params interface{}, chanLimit int, getResFunc GetRes) (i
 		res = append(res, r)
 	}
 	return res, nil
+}
+
+func test()  {
+	res, _ := GetResByParamSlice([]string{"1", "2", "3"}, 10, func(param interface{}, resChan chan<- interface{}) {
+		resChan <- param
+	})
+	fmt.Println(res)
 }

@@ -1,7 +1,7 @@
 package tree
 
 import (
-	"github.com/hzy9738/common-utils/convert"
+	"github.com/hzy9738/go-utils/convert"
 	"reflect"
 )
 
