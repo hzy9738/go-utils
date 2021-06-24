@@ -13,6 +13,7 @@ type GetResSlice func(param []interface{}, resChan chan<- []interface{})
 // params参数是切片
 // chanLimit是chan的容量和协成查询的条数
 // getResFunc回调函数，必须在回调中赋值给resChan
+// resChan是切片
 
 func GetResByParamSlice(params interface{}, chanLimit int, getResFunc GetRes) (interface{}, error) {
 	s := reflect.ValueOf(params)
@@ -62,6 +63,7 @@ func GetResByParamSlice(params interface{}, chanLimit int, getResFunc GetRes) (i
 // params参数是长度巨大的切片
 // chanLimit是chan的容量和协成查询的条数
 // getResFunc回调函数，必须在回调中赋值给resChan
+// resChan是切片
 
 func GetResByLongParamSlice(params interface{}, chanLimit int, getResFunc GetResSlice) (interface{}, error) {
 	s := reflect.ValueOf(params)
