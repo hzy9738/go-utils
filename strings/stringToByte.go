@@ -14,3 +14,8 @@ func To2Byte(s string) []byte {
 	ss := *(*reflect.StringHeader)(unsafe.Pointer(&s))
 	return *(*[]byte)(unsafe.Pointer(&ss))
 }
+
+func From2Byte(b []byte) string {
+	bb := *(*reflect.SliceHeader)(unsafe.Pointer(&b))
+	return *(*string)(unsafe.Pointer(&bb))
+}
